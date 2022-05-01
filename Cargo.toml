@@ -1,6 +1,6 @@
 [package]
 name = "stalkerware-indicators"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Parser for Te-k's stalkerware-indicators repo"
 authors = ["kpcyrd <git@rxv.cc>"]
