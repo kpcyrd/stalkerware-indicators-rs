@@ -5,7 +5,7 @@
 [docs-img]:     https://docs.rs/stalkerware-indicators/badge.svg
 [docs]:         https://docs.rs/stalkerware-indicators
 
-Parser for Te-k's [stalkerware-indicators](https://github.com/Te-k/stalkerware-indicators) repo.
+Parser for Echap's [stalkerware-indicators](https://github.com/AssoEchap/stalkerware-indicators) repo.
 
 ## Usage
 
@@ -14,7 +14,7 @@ See the [documentation](https://docs.rs/stalkerware-indicators).
 ## Lint a file
 
 ```sh
-git clone https://github.com/Te-k/stalkerware-indicators
+git clone https://github.com/AssoEchap/stalkerware-indicators
 cargo run --example lint -- stalkerware-indicators/ioc.yaml
 ```
 

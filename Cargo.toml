@@ -2,7 +2,7 @@
 name = "stalkerware-indicators"
 version = "0.1.1"
 edition = "2021"
-description = "Parser for Te-k's stalkerware-indicators repo"
+description = "Parser for Echap's stalkerware-indicators repo"
 authors = ["kpcyrd <git@rxv.cc>"]
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/kpcyrd/stalkerware-indicators-rs"
