@@ -7,7 +7,7 @@
 //! use std::fs;
 //!
 //! fn main() -> anyhow::Result<()> {
-//!     let buf = fs::read("test_data/ioc-2022-04-30.yaml")
+//!     let buf = fs::read("test_data/ioc-2022-12-15.yaml")
 //!         .context("Failed to read ioc yaml file")?;
 //!
 //!     let rules = stalkerware_indicators::parse_from_buf(&buf);
@@ -46,15 +46,22 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_load_2022_04_30() {
-        let rules = parse_from_file("test_data/ioc-2022-04-30.yaml").unwrap();
-        assert_eq!(rules.len(), 81);
+    fn test_load_2022_09_14() {
+        let rules = parse_from_file("test_data/ioc-2022-09-14.yaml").unwrap();
+        assert_eq!(rules.len(), 117);
+    }
+
+    #[test]
+    fn test_load_2022_12_15() {
+        let rules = parse_from_file("test_data/ioc-2022-12-15.yaml").unwrap();
+        assert_eq!(rules.len(), 146);
     }
 
     #[test]
     fn parse_minimal() {
         let buf = r#"
 - name: Minimal
+  type: stalkerware
         "#;
 
         let rules = parse_from_buf(buf.as_bytes()).unwrap();
@@ -63,7 +70,9 @@ mod tests {
             vec![Rule {
                 name: "Minimal".to_string(),
                 names: Vec::new(),
+                r#type: "stalkerware".to_string(),
                 packages: Vec::new(),
+                distribution: Vec::new(),
                 certificates: Vec::new(),
                 websites: Vec::new(),
                 c2: C2Rule {
@@ -78,6 +87,7 @@ mod tests {
     fn parse_empty_c2() {
         let buf = r#"
 - name: Minimal
+  type: stalkerware
   c2: {}
         "#;
 
@@ -87,7 +97,9 @@ mod tests {
             vec![Rule {
                 name: "Minimal".to_string(),
                 names: Vec::new(),
+                r#type: "stalkerware".to_string(),
                 packages: Vec::new(),
+                distribution: Vec::new(),
                 certificates: Vec::new(),
                 websites: Vec::new(),
                 c2: C2Rule {

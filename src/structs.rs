@@ -2,16 +2,21 @@ use serde::{Deserialize, Serialize};
 use std::net::IpAddr;
 
 /// A rule entry that lists indicators of compromise for a strain of stalkerware
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Rule {
     /// A canonical name for this strain
     pub name: String,
     /// Other names this stalkerware is known as
     #[serde(default)]
     pub names: Vec<String>,
+    /// The kind of app, either `stalkerware` or `watchware`
+    pub r#type: String,
     /// App identifiers this stalkerware uses
     #[serde(default)]
     pub packages: Vec<String>,
+    /// Domains that are involved in distributing the app itself (eg. the .apk)
+    #[serde(default)]
+    pub distribution: Vec<String>,
     /// Certificates that are in use with this stalkerware
     #[serde(default)]
     pub certificates: Vec<String>,
@@ -24,7 +29,7 @@ pub struct Rule {
 }
 
 /// Struct for C2 infos
-#[derive(Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Default, Serialize, Deserialize)]
 pub struct C2Rule {
     /// List of known C2 ip addresses
     #[serde(default)]
