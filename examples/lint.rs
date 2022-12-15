@@ -1,4 +1,4 @@
-use clap::Parser;
+use clap::{ArgAction, Parser};
 use env_logger::Env;
 use stalkerware_indicators::errors::*;
 use std::collections::HashSet;
@@ -13,7 +13,7 @@ struct Args {
     #[clap(long)]
     dump_json: bool,
     /// Verbose output
-    #[clap(short, parse(from_occurrences))]
+    #[clap(short, action=ArgAction::Count)]
     verbose: u8,
     /// Quiet output
     #[clap(short)]
