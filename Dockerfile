@@ -1,4 +1,4 @@
-FROM rust:alpine3.15
+FROM rust:alpine3.19
 ENV RUSTFLAGS="-C target-feature=-crt-static"
 RUN apk add --no-cache musl-dev
 WORKDIR /code
@@ -10,7 +10,7 @@ RUN --mount=type=cache,target=/var/cache/buildkit \
     cp -v /var/cache/buildkit/target/release/examples/lint /
 RUN strip /lint
 
-FROM alpine:3.15
+FROM alpine:3.19
 RUN apk add --no-cache libgcc
 COPY --from=0 /lint /usr/local/bin/
 ENTRYPOINT ["lint"]
